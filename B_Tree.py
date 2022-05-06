@@ -1,7 +1,7 @@
 #Pseudocode
 """Input: Recive a node with differents keys, and the key we search
    Output: If found the key return the key and the position
-           If is a leaf return None becuase we can not continue in this node
+           If is a leaf return None because we can not continue in this node
            Else continue search to the differents child of keys
 """      
 def search_key(key, node):
