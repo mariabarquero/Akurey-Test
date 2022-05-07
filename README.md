@@ -2,25 +2,24 @@
 ### Implement the toMatrix() method. Such a method transforms the current BTree to an NxM matrix representation.
 
 
-I was not able to develop the toMatrix() method, however I search how a Btree worked and understood the following example:
+In the following examples I explain what I understood:
 
-The list example is as follows 5,3,21,9,1,13,2,7,10,12,4,8.
+In the first example the order is 3, so the maximum number of keys per node is 2. To know the size of the matrix I perform the following calculation:
 
-- First I take 5,3 and 21 and ordered from highest to lowest.The order in this case is 4 so the Key would be 4-1 = 3.
+- N = (order - 2) + order   #Rows
+- M = len (Btree)           #Columns
 
-- In the second step add 9, but in this case we have the 3 keys so we have to split the list. And put (5) (3,-,-) and (9,21,-)
+The matrix has the size NxM = 4x11
 
-- After add the number 13, occur the same case with 7. So we split again the tree and add 9 to the list of 5. Is the 3 step in the picture
+The first rows will be the maximum of `keys - 1` because the key we are looking for is not counted, so in this case they can have 2 rows of brothers. The remaining rows are the left and right Btree. To represent the tree I decided to choose the first key of the node.
 
-- With 21 and 4 occur the same so we have to split the tree and you can see the result in the step 6
 
-![Step B-Tree](Btree.jpg)
+![Matrix Example 1](Ex1.jpg)
 
-## Posible Solution:
+The second example is the same the order is 4, so the maximum number of keys per node is 3.  The size of the Matrix is 6x12.
 
-What I would have done is while I am looking for the key in the tree, store in a list the brothers of that node, when find the key in that node, add the list to the matrix and continue with the elements of that list to search the left and right tree and to avoid going through the whole tree again, I would store the level of the key and the position where it is located. 
+![Matrix Example 2](Ex2.jpg)
 
-I imagine the matrix as a hash of 0 and 1 as the following image:
+**Importan Notes:**
 
-![Matrix Example](Matrix.jpg)
-
+The keys must be greater than 0 since I decided to represent the empty spaces in the matrix with the number 0.
